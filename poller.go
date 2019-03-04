@@ -112,6 +112,9 @@ func (p *longPoller) pumpUpdates() error {
 func (p *longPoller) poll() ([]*notification, error) {
 	notifications := p.notifications.toString()
 	url := notificationURL(p.conf, notifications)
+	
+	fmt.Printf("TODO: long poller notificationURL: %s\n", url)
+	
 	bts, err := p.requester.request(url)
 	if err != nil || len(bts) == 0 {
 		return nil, err
