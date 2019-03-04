@@ -84,6 +84,7 @@ func (c *Client) Stop() error {
 // fetchAllCinfig fetch from remote, if failed load from local file
 func (c *Client) preload() error {
 	if err := c.longPoller.preload(); err != nil {
+		fmt.Printf("Long poller preload failed: %v\n", err)
 		return c.loadLocal(c.getDumpFileName())
 	}
 	return nil
